@@ -49,7 +49,7 @@ public class RedisConfig extends CachingConfigurerSupport{
         redisConnectionFactory.setHostName(propertyResolver.getProperty("host"));
         redisConnectionFactory.setPort(Integer.valueOf(propertyResolver.getProperty("port")));
         //String password = QEncodeUtil.aesDecrypt(propertyResolver.getProperty("password"), "public");
-        redisConnectionFactory.setPassword("Qzk769911900");
+        //redisConnectionFactory.setPassword("");
         redisConnectionFactory.setPoolConfig(jedisPoolConfig);
         log.info("注入成功");
         return redisConnectionFactory;
