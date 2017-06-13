@@ -5,19 +5,32 @@ Spring boot,Redis,Mybatis,lombok
 
 #阿里云ECS连接阿里云Redis
 wget http://www.boutell.com/rinetd/http/rinetd.tar.gz&&tar -xvf rinetd.tar.gz&&cd rinetd
+
 sed -i 's/1/65535/g' rinetd.c
+
 mkdir /usr/man&&make&&make install
+
 vi /etc/rinetd.conf(输入以下2行)
+
 0.0.0.0 6379 Redis的链接地址 6379
+
 logfile /var/log/rinetd.log
+
 rinetd
+
 echo rinetd >>/etc/rc.local(开机启动)
+
 redis-cli -h 1.1.1.1 -a Redis的实例ID:Redis密码
 
+
 #jdk1.7安装
+
 yum -y list java*
+
 yum -y install java-1.7.0-openjdk*
+
 java -version
+
 
 #lrzsz安装文件上传下载xshll需要设置xshall==》ZMODEM==》下载路径
 yum -y list lrzsz*
