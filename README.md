@@ -2,6 +2,7 @@
 Spring boot,Redis,Mybatis,lombok
 服务为阿里云ECS服务器，Redis为阿里云Redis，数据库为阿里云MySql，放在docker上运行
 ====================centOs 7装机===========================
+
 #阿里云ECS连接阿里云Redis
 wget http://www.boutell.com/rinetd/http/rinetd.tar.gz&&tar -xvf rinetd.tar.gz&&cd rinetd
 sed -i 's/1/65535/g' rinetd.c
@@ -18,7 +19,7 @@ yum -y list java*
 yum -y install java-1.7.0-openjdk*
 java -version
 
-#lrzsz安装文件上传下载xshll需要设置ZMODEM==》下载路径
+#lrzsz安装文件上传下载xshll需要设置xshall==》ZMODEM==》下载路径
 yum -y list lrzsz*
 yum install lrzsz
 
