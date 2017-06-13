@@ -1,9 +1,12 @@
 # UserDemo
 Spring boot,Redis,Mybatis,lombok
+
 服务为阿里云ECS服务器，Redis为阿里云Redis，数据库为阿里云MySql，放在docker上运行
+
 ====================centOs 7装机===========================
 
 #阿里云ECS连接阿里云Redis
+
 wget http://www.boutell.com/rinetd/http/rinetd.tar.gz&&tar -xvf rinetd.tar.gz&&cd rinetd
 
 sed -i 's/1/65535/g' rinetd.c
