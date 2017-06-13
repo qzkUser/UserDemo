@@ -33,16 +33,28 @@ java -version
 
 
 #lrzsz安装文件上传下载xshll需要设置xshall==》ZMODEM==》下载路径
+
 yum -y list lrzsz*
+
 yum install lrzsz
 
+
 #安装tomcat7
+
 wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-7/v7.0.78/bin/apache-tomcat-7.0.78.tar.gz
+
 tar -xzvf apache-tomcat-7.0.78.tar.gz
+
 vi /root/apache-tomcat-7.0.78/conf/server.xml（修改端口）
+
 sh /root/apache-tomcat-7.0.78/bin/startup.sh(启动)
+
 (停止直接杀死进程)
 
+
 #docker安装
+
 yum -y install docker
+
 systemctl start docker.service
+
