@@ -1,7 +1,6 @@
 package com.qzk.configuration;
 
 import lombok.extern.log4j.Log4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
@@ -15,14 +14,13 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-
 import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
 @EnableCaching
 @Log4j
 public class RedisConfig extends CachingConfigurerSupport{
-	//private final Logger logger = Logger.getLogger(RedisConfig.class);
+    //private final Logger logger = Logger.getLogger(RedisConfig.class);
 
     private RelaxedPropertyResolver propertyResolver;
 
@@ -30,20 +28,20 @@ public class RedisConfig extends CachingConfigurerSupport{
     public void setEnvironment(Environment env) {
         this.propertyResolver = new RelaxedPropertyResolver(env, "spring.redis.");
     }
-    
-    
-    @Bean(name= "jedis.pool.config")  
+
+
+    @Bean(name= "jedis.pool.config")
     public JedisPoolConfig jedisPoolConfig () {
-    	JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxIdle(Integer.valueOf(propertyResolver.getProperty("pool.max-idle")));
         jedisPoolConfig.setMaxWaitMillis(Integer.valueOf(propertyResolver.getProperty("pool.max-wait")));
         return jedisPoolConfig;
     }
-    
+
     @Bean
     //@SneakyThrows
     public JedisConnectionFactory redisConnectionFactory(@Qualifier("jedis.pool.config") JedisPoolConfig jedisPoolConfig) {
-        JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory();  
+        JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory();
         // Defaults
         log.info("redis地址为:" + propertyResolver.getProperty("host") + ":" + propertyResolver.getProperty("port"));
         redisConnectionFactory.setHostName(propertyResolver.getProperty("host"));
@@ -54,22 +52,22 @@ public class RedisConfig extends CachingConfigurerSupport{
         log.info("注入成功");
         return redisConnectionFactory;
     }
-    
+
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory cf) {
         RedisTemplate<String, String> redisTemplate = new RedisTemplate<String, String>();
         redisTemplate.setConnectionFactory(cf);
         return redisTemplate;
     }
-    
-    @Bean  
+
+    @Bean
     public CacheManager cacheManager(@SuppressWarnings("rawtypes") RedisTemplate redisTemplate) {
         RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
         cacheManager.setDefaultExpiration(3000);
         return cacheManager;
     }
-    
-    
+
+
 
     /*@Bean
     @SneakyThrows
@@ -86,9 +84,9 @@ public class RedisConfig extends CachingConfigurerSupport{
                   Integer.valueOf(propertyResolver.getProperty("port")),
                   Integer.valueOf(propertyResolver.getProperty("timeout")), password);
         logger.info("jedisPool注入成功！！");
-        
+
         System.out.println(jedisPool.getResource().get("q1"));
-        
+
         return jedisPool;
     }*/
 }

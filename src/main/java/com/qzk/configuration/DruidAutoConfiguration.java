@@ -1,9 +1,6 @@
 package com.qzk.configuration;
 
-import java.sql.SQLException;
-
-import javax.sql.DataSource;
-
+import com.alibaba.druid.pool.DruidDataSource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
@@ -12,7 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.alibaba.druid.pool.DruidDataSource;
+import javax.sql.DataSource;
+import java.sql.SQLException;
 
 @EnableTransactionManagement
 @Configuration

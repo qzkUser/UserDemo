@@ -1,13 +1,8 @@
 package com.qzk.controller;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-
-import java.util.List;
-
+import com.qzk.model.User;
+import com.qzk.service.UserService;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qzk.model.User;
-import com.qzk.service.UserService;
+import java.util.List;
 
 
 @RestController
@@ -40,7 +34,7 @@ public class UserLoginController {
         @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
     @RequestMapping(value="/addUser",method=RequestMethod.GET)
-    public boolean addUser(@RequestParam("username") String username, 
+    public boolean addUser(@RequestParam("username") String username,
                            @RequestParam("password") String password) {
         return userService.addUser(username,password);
     }
@@ -73,6 +67,18 @@ public class UserLoginController {
     public User loginUser(@RequestParam("username") String username, @RequestParam("password") String password){
     	return userService.loginUser(username, password).build();
     }
+
+    @ApiOperation(value="获取全部用户",httpMethod="get",notes="获取全部用户1.0",response=List.class)
+    @ApiResponses({
+            @ApiResponse(code=400,message="请求参数没填好"),
+            @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
+    })
+    @RequestMapping(value="/listUsers",method=RequestMethod.GET)
+    public List<User> listUsers(){
+        System.out.println("=============>>>>>>>>>>>>>>");
+        List<User> list = userService.getAllUsers();
+        return list;
+    }
     
     @ApiOperation(value="获取全部用户",httpMethod="get",notes="获取全部用户1.0",response=List.class)
     @ApiResponses({
@@ -82,9 +88,6 @@ public class UserLoginController {
     @RequestMapping(value="/getAllUsers",method=RequestMethod.GET)
     public List<User> getAllUsers(){
     	List<User> list = userService.getAllUsers();
-    	for (User user : list) {
-			System.out.println(user);
-		}
     	return list;
     }
     
@@ -96,7 +99,7 @@ public class UserLoginController {
     	@ApiResponse(code=400,message="请求参数没填好"),
         @ApiResponse(code=404,message="请求路径没有或页面跳转路径不对")
     })
-    @RequestMapping(value="/deleteUserById",method=RequestMethod.GET)
+    @RequestMapping(value="/deleteUserById",method=RequestMethod.DELETE)
     public boolean deleteUserById(@RequestParam Integer id){
     	return userService.deleteUserById(id);
     }

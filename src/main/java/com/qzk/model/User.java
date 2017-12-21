@@ -1,18 +1,13 @@
 package com.qzk.model;
 
-import java.io.Serializable;
+import lombok.*;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.io.Serializable;
 
 @Builder
 @Data
 @AllArgsConstructor(access=AccessLevel.PRIVATE)
 @NoArgsConstructor(access=AccessLevel.PRIVATE)
-
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = -4481104812517683307L;

@@ -1,13 +1,12 @@
 package com.qzk.dao;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.qzk.mapper.UserMapper;
 import com.qzk.model.User;
 import com.qzk.model.User.UserBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class UserDao {

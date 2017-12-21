@@ -1,17 +1,15 @@
 package com.qzk.utils;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.SecureRandom;
+import org.springframework.util.StringUtils;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.spec.SecretKeySpec;
-
-import org.springframework.util.StringUtils;
-
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.SecureRandom;
 
 
 /**

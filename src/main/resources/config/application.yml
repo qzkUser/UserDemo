@@ -22,14 +22,22 @@ server:
     # 打开Tomcat的Access日志，并可以设置日志格式的方法：
     #server.tomcat.access-log-enabled=true
     #server.tomcat.access-log-pattern=
-#datasource
+eureka:
+   client:
+     serviceUrl:
+     #springCloud注册中心地址
+      defaultZone: http://localhost:8888/eureka/
 spring:
+#注册服务名
+    application:
+        name: UserDemo
+#datasource
     datasource:
         name: era
-        url: jdbc:mysql://地址:3306/itqzk?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-        username: 
-        password: 
-        publickey: 
+        url: jdbc:mysql://rm-uf6f2t74095fpp824o.mysql.rds.aliyuncs.com:3306/itqzk?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: itqzk
+        password: rlC0RcvJBvXZjkKp+v16Iv0K6rXdvkxKqIndZ3sMwuMH/CAK1iEWYLXYJnM6dxT/ek+LuNV4zeHKK6kdYdFT1w==
+        publickey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAODUaZka+N3QPtSZMQP7w0nYNvwyZhNCWHr+MXdMhiMHse1n+pUjR8eruHKUzc22rrLrw3GTvmQxUH3+iAr426UCAwEAAQ==
         # 使用druid数据源
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver

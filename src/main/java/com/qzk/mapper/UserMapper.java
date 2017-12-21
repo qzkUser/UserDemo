@@ -1,15 +1,13 @@
 package com.qzk.mapper;
 
-import java.util.List;
-
+import com.qzk.model.User;
+import com.qzk.model.User.UserBuilder;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.qzk.model.User;
-import com.qzk.model.User.UserBuilder;
-
+import java.util.List;
 
 
 public interface UserMapper {

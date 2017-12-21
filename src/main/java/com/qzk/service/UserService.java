@@ -1,18 +1,16 @@
 package com.qzk.service;
 
-import java.util.List;
-
+import com.qzk.dao.UserDao;
+import com.qzk.exception.ServiceRuntimeException;
+import com.qzk.model.User;
+import com.qzk.model.User.UserBuilder;
 import lombok.SneakyThrows;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.qzk.dao.UserDao;
-import com.qzk.exception.ServiceRuntimeException;
-import com.qzk.model.User;
-import com.qzk.model.User.UserBuilder;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -39,6 +37,7 @@ public class UserService {
 	}
 
 	@SneakyThrows(ServiceRuntimeException.class)
+
 	public List<User> getAllUsers() {
 		return userDao.getAllUsers();
 	}
